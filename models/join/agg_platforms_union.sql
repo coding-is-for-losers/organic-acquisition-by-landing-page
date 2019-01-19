@@ -1,0 +1,13 @@
+SELECT 
+date, 
+recipeid,
+recipeinstanceid,
+site,
+domain,
+landing_page_url,
+clicks,
+impressions,
+ctr,
+position
+FROM 
+{{ref('gsc_proc')}}
