@@ -31,8 +31,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as views (the default). Try changing `view` to `table` below, then re-running dbt
 models:
   ga_search_console:
-      admin:
-          materialized: table
       base:
           materialized: table          
       join:
