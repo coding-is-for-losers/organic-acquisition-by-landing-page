@@ -30,7 +30,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as views (the default). Try changing `view` to `table` below, then re-running dbt
 models:
-  agency_data_pipeline:
+  ga_search_console:
       admin:
           materialized: table
       base:
