@@ -15,12 +15,14 @@ FROM (
 	recipeinstanceid,
 	site,
 	domain,
-	landing_page_url,
+	hostname,
+	source,
+	medium,
 	sessions,
-	goal_completions_all
+	goal_completions_all,
 	lower(trim(regexp_replace(replace(replace(replace(replace(CONCAT(hostname,landing_page_path),'www.',''),'http://',''),'https://',''),'.html',''),r'\?.*$',''),'/')) as landing_page_url,
 	enteredon,
-	first_value(enteredon) OVER (PARTITION BY hostname, landingpagepath, date, source, medium ORDER BY _sdc_sequence DESC) lv
+	first_value(enteredon) OVER (PARTITION BY hostname, landing_page_path, date, source, medium ORDER BY enteredon DESC) lv
 	FROM `{{ target.project }}.organic_acquisition_by_landing_page.google_analytics_data_source`
 )
 WHERE lv = enteredon

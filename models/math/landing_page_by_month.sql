@@ -25,7 +25,7 @@ FROM (
     sum(goal_completions_all) goal_completions_all,
     sum(clicks) clicks,
     sum(impressions) impressions,
-    sum(clicks)/sum(impressions) as ctr,
+    case when sum(impressions) > 0 then sum(clicks)/sum(impressions) else 0 end as ctr,
     min(position) as min_position
     FROM {{ ref('agg_platforms_ga') }}
     GROUP BY date, recipeid, recipeinstanceid, site, domain, landing_page_url

@@ -32,5 +32,5 @@ FROM (
     case when total_sessions > 0 then sessions / total_sessions else null end as pct_sessions,
     goal_completions_all,
     case when total_goal_completions > 0 then goal_completions_all / total_goal_completions else null end as pct_goal_completions
-    FROM {{ ref('landing_page_by_month')}}
+    FROM `data-pipeline-api-integrations`.`agency_data_pipeline`.`landing_page_by_month`
 )
